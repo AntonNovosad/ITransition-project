@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdk = 32
+    compileSdkVersion(ConfigData.compileSdk)
 
     defaultConfig {
         applicationId = "com.example.itransition_project"
-        minSdk = 26
-        targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
+        minSdkVersion(ConfigData.minSdk)
+        targetSdkVersion(ConfigData.targetSdk)
+        versionCode = ConfigData.versionCode
+        versionName = ConfigData.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -37,10 +37,10 @@ android {
 dependencies {
 
     implementation(Dependencies.coreKtx)
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("com.google.android.material:material:1.5.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    implementation(Dependencies.appCompat)
+    implementation(Dependencies.material)
+    implementation(Dependencies.constraintLayout)
+    testImplementation(Dependencies.jUnit)
+    androidTestImplementation(Dependencies.extJUnit)
+    androidTestImplementation(Dependencies.espresso)
 }
