@@ -14,3 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ITransition-project"
 include ':app'
+include ':ui'
+include ':data'
+include ':domain'
+include ':entity'
