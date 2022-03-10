@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion(ConfigData.compileSdk)
+    compileSdk = ConfigData.compileSdk
 
     defaultConfig {
         applicationId = "com.example.itransition_project"
-        minSdkVersion(ConfigData.minSdk)
-        targetSdkVersion(ConfigData.targetSdk)
+        minSdk = ConfigData.minSdk
+        targetSdk = ConfigData.targetSdk
         versionCode = ConfigData.versionCode
         versionName = ConfigData.versionName
 
@@ -20,8 +20,8 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-              getDefaultProguardFile("proguard-android-optimize.txt"),
-              "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -36,7 +36,7 @@ android {
 
 dependencies {
 
-    implementation(Dependencies.coreKtx)
+    implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.material)
     implementation(Dependencies.constraintLayout)

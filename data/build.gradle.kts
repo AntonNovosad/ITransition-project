@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion(ConfigData.compileSdk)
+    compileSdk = ConfigData.compileSdk
 
     defaultConfig {
         applicationId = "com.example.itransition_project"
-        minSdkVersion(ConfigData.minSdk)
-        targetSdkVersion(ConfigData.targetSdk)
-        versionCode =ConfigData.versionCode
-        versionName =ConfigData.versionName
+        minSdk = ConfigData.minSdk
+        targetSdk = ConfigData.targetSdk
+        versionCode = ConfigData.versionCode
+        versionName = ConfigData.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,7 +36,7 @@ android {
 
 dependencies {
 
-    implementation(Dependencies.coreKtx)
+    implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.material)
     implementation(Dependencies.constraintLayout)
