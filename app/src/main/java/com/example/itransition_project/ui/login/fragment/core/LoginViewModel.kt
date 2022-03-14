@@ -1,4 +1,4 @@
-package com.example.itransition_project.ui.login
+package com.example.itransition_project.ui.login.fragment.core
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

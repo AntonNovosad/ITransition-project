@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.itransition_project.R
 import com.example.itransition_project.databinding.LoginFragmentBinding
-import com.example.itransition_project.ui.login.LoginViewModel
 
 class LoginFragment : Fragment(R.layout.login_fragment) {
 
