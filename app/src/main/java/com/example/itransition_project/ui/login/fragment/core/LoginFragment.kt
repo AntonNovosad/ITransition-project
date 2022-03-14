@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.itransition_project.R
@@ -16,7 +17,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     lateinit var binding: LoginFragmentBinding
 
     private val viewModel: LoginViewModel by lazy {
-        ViewModelProvider(this).get(LoginViewModel::class.java)
+        ViewModelProvider(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
     }
 
     override fun onCreateView(
