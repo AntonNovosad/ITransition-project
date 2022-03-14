@@ -10,8 +10,6 @@ class LoginViewModel : ViewModel() {
         Log.i("Login", "LoginViewModel created")
     }
 
-    lateinit var binding: LoginFragmentBinding
-
 
     fun validationForm(email: String?, password: String?): Boolean {
         val isValidEmail = emptyValidator(email) && emailValidator(email)
