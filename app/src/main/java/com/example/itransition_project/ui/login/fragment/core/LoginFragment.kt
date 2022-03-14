@@ -1,6 +1,5 @@
 package com.example.itransition_project.ui.login.fragment.core
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,26 +8,29 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.itransition_project.ui.home.HomeActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.itransition_project.R
 import com.example.itransition_project.databinding.LoginFragmentBinding
+import com.example.itransition_project.ui.login.LoginViewModel
 
 class LoginFragment : Fragment(R.layout.login_fragment) {
 
     lateinit var binding: LoginFragmentBinding
+    private lateinit var vm: LoginViewModel
 
-    private val emailLiveData = MutableLiveData<String>() //stateflow
+    private val emailLiveData = MutableLiveData<String>() //stateflow all
     private val passwordLiveData = MutableLiveData<String>()
     private val isValidLiveData = MediatorLiveData<Boolean>().apply {
         this.value = false
 
         addSource(emailLiveData) { email ->
             val password = passwordLiveData.value
-            this.value = validateForm(email, password)
+            this.value = vm.validationForm(email, password)
         }
         addSource(passwordLiveData) { password ->
             val email = emailLiveData.value
-            this.value = validateForm(email, password)
+            this.value = vm.validationForm(email, password)
         }
     }
 
@@ -37,7 +39,10 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = LoginFragmentBinding.inflate(inflater)
+
+        vm = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         val emailEdit = binding.emailEditText
         val passwordEdit = binding.passwordEditText
@@ -54,16 +59,9 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         }
 
         binding.buttonLogin.setOnClickListener {
-            val intent = Intent(this@LoginFragment.requireContext(), HomeActivity::class.java)
-            startActivity(intent)
+            findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
         }
 
         return binding.root
-    }
-
-    private fun validateForm(email: String?, password: String?): Boolean {
-        val isValidEmail = email != null && email.isNotBlank() && email.contains("@")
-        val isValidPassword = password != null && password.isNotBlank() && password.length >= 2 && password.length <= 10
-        return isValidEmail && isValidPassword
     }
 }
