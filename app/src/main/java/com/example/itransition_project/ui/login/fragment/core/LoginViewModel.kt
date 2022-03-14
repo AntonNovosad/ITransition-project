@@ -4,41 +4,32 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.itransition_project.databinding.LoginFragmentBinding
 
+private const val MIN_PASSWORD_LENGTH = 2
+private const val MAX_PASSWORD_LENGTH = 10
+
 class LoginViewModel : ViewModel() {
 
-    init {
-        Log.i("Login", "LoginViewModel created")
-    }
-
-
-    fun validationForm(email: String?, password: String?): Boolean {
+    fun validationForm(email: String, password: String): Boolean {
         val isValidEmail = emptyValidator(email) && emailValidator(email)
         val isValidPassword = emptyValidator(password) && passwordValidator(password)
         return isValidEmail && isValidPassword
     }
 
-    private fun emailValidator(email: String?): Boolean {
-        return email != null && email.contains("@")
+    private fun emailValidator(email: String): Boolean {
+        return email.contains("@")
     }
 
-    private fun passwordValidator(password: String?): Boolean {
-        val minPasswordLength = 2
-        val maxPasswordLength = 10
-        if (password != null && password.length < minPasswordLength) {
+    private fun passwordValidator(password: String): Boolean {
+        if (password.length < MIN_PASSWORD_LENGTH) {
             return false
         }
-        if (password != null && password.length > maxPasswordLength) {
+        if (password.length > MAX_PASSWORD_LENGTH) {
             return false
         }
         return true
     }
 
-    private fun emptyValidator(text: String?): Boolean {
-        return text != null && text.isNotEmpty()
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        Log.i("LoginCleaned", "LoginViewModel destroyed")
+    private fun emptyValidator(text: String): Boolean {
+        return text.isNotEmpty()
     }
 }
