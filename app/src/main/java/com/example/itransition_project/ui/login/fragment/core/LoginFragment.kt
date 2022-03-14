@@ -37,9 +37,16 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
+    ): View {
         binding = LoginFragmentBinding.inflate(inflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
+        super.onViewCreated(view, savedInstanceState)
 
         vm = ViewModelProvider(this).get(LoginViewModel::class.java)
 
@@ -60,7 +67,5 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         binding.buttonLogin.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
         }
-
-        return binding.root
     }
 }
