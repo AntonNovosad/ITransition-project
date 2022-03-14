@@ -24,10 +24,12 @@ class LoginViewModel : ViewModel() {
     private fun passwordValidator(password: String?): Boolean {
         val minPasswordLength = 2
         val maxPasswordLength = 10
-        if (password != null && password.length < minPasswordLength)
+        if (password != null && password.length < minPasswordLength) {
             return false
-        if (password != null && password.length > maxPasswordLength)
+        }
+        if (password != null && password.length > maxPasswordLength) {
             return false
+        }
         return true
     }
 
