@@ -36,20 +36,22 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
 
         observeFields()
 
-        binding.emailEditText.addTextChangedListener(
-            onTextChanged = { text, start, before, count ->
-                viewModel.updateEmailText(text?.toString() ?: "")
-            }
-        )
+        with(binding) {
+            emailEditText.addTextChangedListener(
+                onTextChanged = { text, start, before, count ->
+                    viewModel.updateEmailText(text?.toString() ?: "")
+                }
+            )
 
-        binding.passwordEditText.addTextChangedListener(
-            onTextChanged = { text, start, before, count ->
-                viewModel.updatePasswordText(text?.toString() ?: "")
-            }
-        )
+            passwordEditText.addTextChangedListener(
+                onTextChanged = { text, start, before, count ->
+                    viewModel.updatePasswordText(text?.toString() ?: "")
+                }
+            )
 
-        binding.buttonLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
+            buttonLogin.setOnClickListener {
+                findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
+            }
         }
     }
 

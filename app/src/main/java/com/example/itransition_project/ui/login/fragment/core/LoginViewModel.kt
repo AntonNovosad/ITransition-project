@@ -8,7 +8,47 @@ import androidx.lifecycle.ViewModel
 private const val MIN_PASSWORD_LENGTH = 2
 private const val MAX_PASSWORD_LENGTH = 10
 
-class LoginViewModel : ViewModel() {
+
+interface ValidationRule {
+
+    fun validate(text: String): Boolean
+}
+
+class TextIsNotEmptyValidationRule : ValidationRule {
+
+    override fun validate(text: String): Boolean {
+        return text.isNotEmpty()
+    }
+}
+
+class Validator(
+    private val rules: List<ValidationRule>
+) {
+
+    fun validate(text: String): Boolean {
+
+        var isValidated: Boolean = true
+
+        rules.forEach { rule ->
+            val isTextValid = rule.validate(text)
+            if (!isTextValid) {
+                isValidated = false
+            }
+        }
+
+        return isValidated
+    }
+}
+
+
+class LoginViewModel(
+    /*   private val emailValidator: Validator,
+       private val passwordValidator: Validator*/
+) : ViewModel() {
+
+    private val validator: Validator = Validator(
+        rules = listOf(TextIsNotEmptyValidationRule())
+    )
 
     private val emailMutableLiveData = MutableLiveData<String>()
     val emailLiveData: LiveData<String> = emailMutableLiveData
@@ -37,6 +77,10 @@ class LoginViewModel : ViewModel() {
         passwordMutableLiveData.value = text
     }
 
+   /* fun validateFormNew(email: String, password: String) : Boolean {
+        return emailValidator.validate(email) && passwordValidator.validate(password)
+    }*/
+
     private fun validationForm(email: String, password: String): Boolean {
         val isValidEmail = emptyValidator(email) && emailValidator(email)
         val isValidPassword = emptyValidator(password) && passwordValidator(password)
@@ -58,6 +102,6 @@ class LoginViewModel : ViewModel() {
     }
 
     private fun emptyValidator(text: String): Boolean {
-        return text.isNotEmpty()
+        return validator.validate(text)
     }
 }
