@@ -10,5 +10,6 @@ object Versions {
     const val recyclerview = "28.0.0"
     const val lifecycle = "1.1.1"
     const val fragment = "2.4.1"
+    const val runtime = "2.4.1"
     const val coroutines = "1.5.2"
 }

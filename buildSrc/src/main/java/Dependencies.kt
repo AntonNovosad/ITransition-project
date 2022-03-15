@@ -12,4 +12,5 @@ object Dependencies {
     val fragment by lazy { "androidx.navigation:navigation-fragment-ktx:${Versions.fragment}" }
     val ui by lazy { "androidx.navigation:navigation-ui-ktx:${Versions.fragment}" }
     val coroutines by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}" }
+    val runtime by lazy { "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.runtime}" }
 }
