@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.itransition_project.R
 import com.example.itransition_project.databinding.LoginFragmentBinding
+import com.example.itransition_project.extensions.repeatWithLifecycle
+import kotlinx.coroutines.flow.collect
 
 class LoginFragment : Fragment(R.layout.login_fragment) {
 
@@ -57,20 +58,28 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     }
 
     private fun observeFields() {
-        viewModel.emailLiveData.observe(viewLifecycleOwner) { email ->
-            if (binding.emailEditText.text.toString() != email) {
-                binding.emailEditText.setText(email)
+
+        repeatWithLifecycle {
+            viewModel.isFormValidStateFlow.collect { isValid ->
+                binding.buttonLogin.isEnabled = isValid
             }
         }
 
-        viewModel.passwordLiveData.observe(viewLifecycleOwner) { password ->
-            if (binding.passwordEditText.text.toString() != password) {
-                binding.passwordEditText.setText(password)
-            }
+        repeatWithLifecycle {
+            viewModel.emailStateFlow
+                .collect { email ->
+                    if (binding.emailEditText.text.toString() != email) {
+                        binding.emailEditText.setText(email)
+                    }
+                }
         }
 
-        viewModel.isFormValidLiveData.observe(viewLifecycleOwner) { isValid ->
-            binding.buttonLogin.isEnabled = isValid
+        repeatWithLifecycle {
+            viewModel.passwordStateFlow.collect { password ->
+                if (binding.passwordEditText.text.toString() != password) {
+                    binding.passwordEditText.setText(password)
+                }
+            }
         }
     }
 }

@@ -1,10 +1,11 @@
 package com.example.itransition_project.ui.login.fragment.core
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.ui.validation.Validator
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 
 
 class LoginViewModel(
@@ -13,31 +14,24 @@ class LoginViewModel(
 ) : ViewModel() {
 
 
-    private val emailMutableLiveData = MutableLiveData<String>()
-    val emailLiveData: LiveData<String> = emailMutableLiveData
+    private val emailMutableStateFlow = MutableStateFlow("")
+    val emailStateFlow: StateFlow<String> = emailMutableStateFlow.asStateFlow()
 
-    private val passwordMutableLiveData = MutableLiveData<String>()
-    val passwordLiveData: LiveData<String> = passwordMutableLiveData
+    private val passwordMutableStateFlow = MutableStateFlow("")
+    val passwordStateFlow: StateFlow<String> = passwordMutableStateFlow.asStateFlow()
 
-    val isFormValidLiveData: LiveData<Boolean> = MediatorLiveData<Boolean>().apply {
-        value = false
-
-        addSource(emailLiveData) { email ->
-            val password = passwordMutableLiveData.value ?: ""
-            this.value = validationForm(email, password)
+    val isFormValidStateFlow =
+        emailMutableStateFlow.combine(passwordMutableStateFlow) { email, password ->
+            validationForm(email, password)
         }
-        addSource(passwordLiveData) { password ->
-            val email = emailMutableLiveData.value ?: ""
-            this.value = validationForm(email, password)
-        }
-    }
+
 
     fun updateEmailText(text: String) {
-        emailMutableLiveData.value = text
+        emailMutableStateFlow.value = text
     }
 
     fun updatePasswordText(text: String) {
-        passwordMutableLiveData.value = text
+        passwordMutableStateFlow.value = text
     }
 
     private fun validationForm(email: String, password: String): Boolean {
