@@ -47,6 +47,7 @@ dependencies {
     implementation(Dependencies.fragment)
     implementation(Dependencies.ui)
     implementation(Dependencies.coroutines)
+    implementation(Dependencies.runtime)
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.material)
