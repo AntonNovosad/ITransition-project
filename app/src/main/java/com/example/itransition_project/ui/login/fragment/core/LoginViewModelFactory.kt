@@ -3,9 +3,7 @@ package com.example.itransition_project.ui.login.fragment.core
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.ui.validation.Validator
-import com.example.ui.validation.rules.EmailIsCorrectValidationRule
-import com.example.ui.validation.rules.PasswordIsCorrectValidationRule
-import com.example.ui.validation.rules.TextIsNotEmptyValidationRule
+import com.example.ui.validation.rules.*
 
 class LoginViewModelFactory : ViewModelProvider.Factory {
 
@@ -13,7 +11,11 @@ class LoginViewModelFactory : ViewModelProvider.Factory {
         rules = listOf(EmailIsCorrectValidationRule(), TextIsNotEmptyValidationRule())
     )
     private val passwordValidator: Validator = Validator(
-        rules = listOf(PasswordIsCorrectValidationRule(), TextIsNotEmptyValidationRule())
+        rules = listOf(
+            TextIsNotEmptyValidationRule(),
+            TextLengthMoreThenNumber(),
+            TextLengthLessThenNumber()
+        )
     )
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
