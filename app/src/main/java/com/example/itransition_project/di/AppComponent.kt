@@ -7,34 +7,42 @@ import dagger.Module
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 import dagger.android.ContributesAndroidInjector
+import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AndroidInjectionModule::class, ValidationModule::class, AppComponent.ActivityBindingModule::class])
+@Component(
+    modules = [
+        AndroidSupportInjectionModule::class,
+        AppComponent.ActivityBindingModule::class
+    ]
+)
 interface AppComponent : AndroidInjector<MyApp> {
 
     @Component.Factory
     abstract class Factory : AndroidInjector.Factory<MyApp> {
     }
 
-    @Module
-    abstract class ActivityBindingModule {
-        @ScopeActivity
-        @ContributesAndroidInjector(modules = [ActivityLoginModule::class, FragmentLoginModule::class])
-        abstract fun contributeLoginActivity(): LoginActivity
-    }
-
-    @Module
-    abstract class ActivityLoginModule {
-        @ScopeFragment
-        @ContributesAndroidInjector
-        abstract fun contributeLoginFragment(): LoginActivity
-    }
+    @Module(
+        includes = [
+            LoginActivityModule::class,
+        ]
+    )
+    abstract class ActivityBindingModule
 
     @Module
     abstract class FragmentLoginModule {
         @ScopeFragment
-        @ContributesAndroidInjector
+        @ContributesAndroidInjector(modules = [ValidationModule::class])
         abstract fun contributeLoginFragment(): LoginFragment
     }
+}
+
+@Module
+abstract class LoginActivityModule {
+    @ScopeActivity
+    @ContributesAndroidInjector(
+        modules = [AppComponent.FragmentLoginModule::class]
+    )
+    abstract fun contributeLoginActivity(): LoginActivity
 }

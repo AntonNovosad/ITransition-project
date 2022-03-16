@@ -6,13 +6,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import javax.inject.Inject
+import javax.inject.Named
 
 
-class LoginViewModel(
+class LoginViewModel (
     private val emailValidator: Validator,
     private val passwordValidator: Validator
 ) : ViewModel() {
-
 
     private val emailMutableStateFlow = MutableStateFlow("")
     val emailStateFlow: StateFlow<String> = emailMutableStateFlow.asStateFlow()

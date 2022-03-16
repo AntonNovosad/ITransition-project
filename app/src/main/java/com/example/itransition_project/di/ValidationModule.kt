@@ -13,8 +13,8 @@ class ValidationModule {
     @Provides
     @Named("emailValidator")
     fun emailValidator(
-        @Named("email") emailIsCorrect: EmailIsCorrectValidationRule,
-        @Named("empty") textIsNotEmpty: TextIsNotEmptyValidationRule
+        @Named("email") emailIsCorrect: ValidationRule,
+        @Named("empty") textIsNotEmpty: ValidationRule
     ): Validator {
         return Validator(
             rules = listOf(emailIsCorrect, textIsNotEmpty)
@@ -24,9 +24,9 @@ class ValidationModule {
     @Provides
     @Named("passwordValidator")
     fun passwordValidator(
-        @Named("empty") textIsNotEmpty: TextIsNotEmptyValidationRule,
-        @Named("less") textLengthLessThenNumber: TextLengthMoreThenNumber,
-        @Named("more") textLengthMoreThenNumber: TextLengthMoreThenNumber
+        @Named("empty") textIsNotEmpty: ValidationRule,
+        @Named("less") textLengthLessThenNumber: ValidationRule,
+        @Named("more") textLengthMoreThenNumber: ValidationRule
     ): Validator {
         return Validator(
             rules = listOf(
@@ -52,24 +52,13 @@ class ValidationModule {
     @Provides
     @Named("less")
     fun provideTextLengthLessThenNumber(): ValidationRule {
-        return TextLengthLessThenNumber()
+        // TODO Константу
+        return TextLengthLessThenNumber(10)
     }
 
     @Provides
     @Named("more")
     fun provideTextLengthMoreThenNumber(): ValidationRule {
         return TextLengthMoreThenNumber()
-    }
-
-    @Provides
-    @Named("factory")
-    fun provideLoginViewModuleFactory(
-        @Named("emailValidator") emailValidator: Validator,
-        @Named("passwordValidator") passwordValidator: Validator
-    ): LoginViewModelFactory {
-        return LoginViewModelFactory(
-            emailValidator = emailValidator,
-            passwordValidator = passwordValidator
-        )
     }
 }

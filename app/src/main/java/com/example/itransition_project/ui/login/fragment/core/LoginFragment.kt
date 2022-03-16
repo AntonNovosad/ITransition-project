@@ -1,24 +1,29 @@
 package com.example.itransition_project.ui.login.fragment.core
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.itransition_project.R
 import com.example.itransition_project.databinding.LoginFragmentBinding
 import com.example.itransition_project.extensions.repeatWithLifecycle
+import dagger.android.support.DaggerFragment
 import kotlinx.coroutines.flow.collect
+import javax.inject.Inject
 
-class LoginFragment : Fragment(R.layout.login_fragment) {
+class LoginFragment : DaggerFragment(R.layout.login_fragment) {
+
+    @Inject
+    lateinit var viewModelFactory: LoginViewModelFactory
 
     lateinit var binding: LoginFragmentBinding
 
     private val viewModel: LoginViewModel by lazy {
-        ViewModelProvider(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
+        ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -35,7 +40,6 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-
         observeFields()
 
         with(binding) {
