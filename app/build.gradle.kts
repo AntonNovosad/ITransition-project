@@ -3,6 +3,7 @@ import ConfigData.compileSdk
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -42,6 +43,11 @@ android {
 }
 
 dependencies {
+
+    implementation("com.google.dagger:dagger-android:2.35.1")
+    implementation("com.google.dagger:dagger-android-support:2.40.1")
+    kapt("com.google.dagger:dagger-android-processor:2.40.1")
+    kapt("com.google.dagger:dagger-compiler:2.40.1")
 
     implementation(project(":ui"))
     implementation(Dependencies.fragment)
