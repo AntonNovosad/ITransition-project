@@ -12,4 +12,6 @@ object Versions {
     const val fragment = "2.4.1"
     const val runtime = "2.4.1"
     const val coroutines = "1.5.2"
+    const val inject = "1"
+    const val daggerCommon = "2.40.1"
 }

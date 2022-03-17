@@ -44,12 +44,13 @@ android {
 
 dependencies {
 
-    implementation("com.google.dagger:dagger-android:2.35.1")
-    implementation("com.google.dagger:dagger-android-support:2.40.1")
-    kapt("com.google.dagger:dagger-android-processor:2.40.1")
-    kapt("com.google.dagger:dagger-compiler:2.40.1")
-
     implementation(project(":ui"))
+
+    implementation(Dependencies.daggerAndroid)
+    implementation(Dependencies.daggerAndroidSupport)
+    kapt(Dependencies.daggerAndroidProcessor)
+    kapt(Dependencies.daggerCompiler)
+
     implementation(Dependencies.fragment)
     implementation(Dependencies.ui)
     implementation(Dependencies.coroutines)

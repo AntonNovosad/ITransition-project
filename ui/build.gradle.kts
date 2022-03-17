@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    implementation("javax.inject:javax.inject:1")
+    implementation(Dependencies.inject)
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.material)
