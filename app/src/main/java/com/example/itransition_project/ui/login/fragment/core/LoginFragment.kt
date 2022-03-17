@@ -14,23 +14,16 @@ import com.example.itransition_project.extensions.repeatWithLifecycle
 import dagger.android.support.DaggerFragment
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
-import javax.inject.Named
 
 class LoginFragment : DaggerFragment(R.layout.login_fragment) {
 
     @Inject
-    @Named("factory")
-    lateinit var vmFactory: LoginViewModelFactory
+    lateinit var viewModelFactory: LoginViewModelFactory
 
     lateinit var binding: LoginFragmentBinding
 
     private val viewModel: LoginViewModel by lazy {
-        ViewModelProvider(this, vmFactory).get(LoginViewModel::class.java)
-    }
-
-    override fun onAttach(context: Context) {
-
-        super.onAttach(context)
+        ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
     }
 
     override fun onCreateView(

@@ -11,12 +11,9 @@ import javax.inject.Named
 
 
 class LoginViewModel (
-    @Named("emailValidator")
     private val emailValidator: Validator,
-    @Named("passwordValidator")
     private val passwordValidator: Validator
 ) : ViewModel() {
-
 
     private val emailMutableStateFlow = MutableStateFlow("")
     val emailStateFlow: StateFlow<String> = emailMutableStateFlow.asStateFlow()

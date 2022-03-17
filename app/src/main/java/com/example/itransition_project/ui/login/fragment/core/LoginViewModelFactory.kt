@@ -6,25 +6,14 @@ import com.example.ui.validation.Validator
 import javax.inject.Inject
 import javax.inject.Named
 
-class LoginViewModelFactory (
+class LoginViewModelFactory @Inject constructor(
     @Named("emailValidator")
-    val emailValidator: Validator,
+    private val emailValidator: Validator,
     @Named("passwordValidator")
-    val passwordValidator: Validator
+    private val passwordValidator: Validator
 ) : ViewModelProvider.Factory {
 
-//    private val emailValidator: Validator = Validator(
-//        rules = listOf(EmailIsCorrectValidationRule(), TextIsNotEmptyValidationRule())
-//    )
-//    private val passwordValidator: Validator = Validator(
-//        rules = listOf(
-//            TextIsNotEmptyValidationRule(),
-//            TextLengthMoreThenNumber(),
-//            TextLengthLessThenNumber()
-//        )
-//    )
-
-
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return LoginViewModel(emailValidator, passwordValidator) as T
     }
