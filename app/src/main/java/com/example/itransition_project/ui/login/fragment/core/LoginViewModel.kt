@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 
 
-class LoginViewModel (
+class LoginViewModel(
     private val emailValidator: Validator,
     private val passwordValidator: Validator
 ) : ViewModel() {
