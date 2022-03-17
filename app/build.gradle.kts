@@ -3,6 +3,7 @@ import ConfigData.compileSdk
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -44,6 +45,12 @@ android {
 dependencies {
 
     implementation(project(":ui"))
+
+    implementation(Dependencies.daggerAndroid)
+    implementation(Dependencies.daggerAndroidSupport)
+    kapt(Dependencies.daggerAndroidProcessor)
+    kapt(Dependencies.daggerCompiler)
+
     implementation(Dependencies.fragment)
     implementation(Dependencies.ui)
     implementation(Dependencies.coroutines)

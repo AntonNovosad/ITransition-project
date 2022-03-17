@@ -13,4 +13,9 @@ object Dependencies {
     val ui by lazy { "androidx.navigation:navigation-ui-ktx:${Versions.fragment}" }
     val coroutines by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}" }
     val runtime by lazy { "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.runtime}" }
+    val inject by lazy { "javax.inject:javax.inject:${Versions.inject}" }
+    val daggerAndroid by lazy{"com.google.dagger:dagger-android:${Versions.daggerCommon}"}
+    val daggerAndroidSupport by lazy{"com.google.dagger:dagger-android-support:${Versions.daggerCommon}"}
+    val daggerAndroidProcessor by lazy{"com.google.dagger:dagger-android-processor:${Versions.daggerCommon}"}
+    val daggerCompiler by lazy{"com.google.dagger:dagger-compiler:${Versions.daggerCommon}"}
 }
