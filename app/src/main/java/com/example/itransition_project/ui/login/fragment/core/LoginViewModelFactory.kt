@@ -2,14 +2,15 @@ package com.example.itransition_project.ui.login.fragment.core
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.itransition_project.ui.login.fragment.qualifiers.EmailValidator
+import com.example.itransition_project.ui.login.fragment.qualifiers.PasswordValidator
 import com.example.ui.validation.Validator
 import javax.inject.Inject
-import javax.inject.Named
 
 class LoginViewModelFactory @Inject constructor(
-    @Named("emailValidator")
+    @EmailValidator
     private val emailValidator: Validator,
-    @Named("passwordValidator")
+    @PasswordValidator
     private val passwordValidator: Validator
 ) : ViewModelProvider.Factory {
 

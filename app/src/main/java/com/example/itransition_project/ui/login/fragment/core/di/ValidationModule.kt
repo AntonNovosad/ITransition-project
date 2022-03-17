@@ -1,20 +1,23 @@
-package com.example.itransition_project.di
+package com.example.itransition_project.ui.login.fragment.core.di
 
-import com.example.itransition_project.ui.login.fragment.core.LoginViewModelFactory
+import com.example.itransition_project.ui.login.fragment.qualifiers.*
 import com.example.ui.validation.Validator
 import com.example.ui.validation.rules.*
 import dagger.Module
 import dagger.Provides
-import javax.inject.Named
+
+
+private const val MIN_TEXT_LENGTH = 2
+private const val MAX_TEXT_LENGTH = 10
 
 @Module
 class ValidationModule {
 
     @Provides
-    @Named("emailValidator")
+    @EmailValidator
     fun emailValidator(
-        @Named("email") emailIsCorrect: ValidationRule,
-        @Named("empty") textIsNotEmpty: ValidationRule
+        @EmailIsCorrect emailIsCorrect: ValidationRule,
+        @TextIsNotEmpty textIsNotEmpty: ValidationRule
     ): Validator {
         return Validator(
             rules = listOf(emailIsCorrect, textIsNotEmpty)
@@ -22,11 +25,11 @@ class ValidationModule {
     }
 
     @Provides
-    @Named("passwordValidator")
+    @PasswordValidator
     fun passwordValidator(
-        @Named("empty") textIsNotEmpty: ValidationRule,
-        @Named("less") textLengthLessThenNumber: ValidationRule,
-        @Named("more") textLengthMoreThenNumber: ValidationRule
+        @TextIsNotEmpty textIsNotEmpty: ValidationRule,
+        @TextLengthLessThenNumberAnnotation textLengthLessThenNumber: ValidationRule,
+        @TextLengthMoreThenNumberAnnotation textLengthMoreThenNumber: ValidationRule
     ): Validator {
         return Validator(
             rules = listOf(
@@ -38,27 +41,26 @@ class ValidationModule {
     }
 
     @Provides
-    @Named("email")
+    @EmailIsCorrect
     fun provideEmailIsCorrect(): ValidationRule {
         return EmailIsCorrectValidationRule()
     }
 
     @Provides
-    @Named("empty")
+    @TextIsNotEmpty
     fun provideTextIsNotEmpty(): ValidationRule {
         return TextIsNotEmptyValidationRule()
     }
 
     @Provides
-    @Named("less")
+    @TextLengthLessThenNumberAnnotation
     fun provideTextLengthLessThenNumber(): ValidationRule {
-        // TODO Константу
-        return TextLengthLessThenNumber(10)
+        return TextLengthLessThenNumber(MAX_TEXT_LENGTH)
     }
 
     @Provides
-    @Named("more")
+    @TextLengthMoreThenNumberAnnotation
     fun provideTextLengthMoreThenNumber(): ValidationRule {
-        return TextLengthMoreThenNumber()
+        return TextLengthMoreThenNumber(MIN_TEXT_LENGTH)
     }
 }

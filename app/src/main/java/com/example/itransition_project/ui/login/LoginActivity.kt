@@ -1,7 +1,6 @@
 package com.example.itransition_project.ui.login
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.example.itransition_project.R
 import dagger.android.support.DaggerAppCompatActivity
 

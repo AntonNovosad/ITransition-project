@@ -1,6 +1,5 @@
 package com.example.itransition_project.ui.login.fragment.core
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
