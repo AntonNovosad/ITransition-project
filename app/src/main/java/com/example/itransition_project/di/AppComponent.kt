@@ -1,6 +1,8 @@
 package com.example.itransition_project.di
 
+import com.example.itransition_project.di.core.LoggerModule
 import com.example.itransition_project.ui.login.fragment.di.LoginActivityModule
+import com.example.itransition_project.ui.main.di.MainActivityModule
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
@@ -10,7 +12,9 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        LoginActivityModule::class
+        LoginActivityModule::class,
+        LoggerModule::class,
+        MainActivityModule::class
     ]
 )
 interface AppComponent : AndroidInjector<MyApp> {

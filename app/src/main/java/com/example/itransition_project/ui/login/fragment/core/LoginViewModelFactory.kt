@@ -16,6 +16,6 @@ class LoginViewModelFactory @Inject constructor(
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return LoginViewModel(emailValidator, passwordValidator) as T
+        return LoginViewModel( emailValidator, passwordValidator) as T
     }
 }
