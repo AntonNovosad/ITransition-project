@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class HomeFragment : DaggerFragment(R.layout.home_fragment) {
 
-    lateinit var binding: HomeFragmentBinding
+    private lateinit var binding: HomeFragmentBinding
 
     @Inject
     lateinit var homeViewModelFactory: HomeViewModelFactory

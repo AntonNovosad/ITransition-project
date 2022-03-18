@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class ProfileFragment : DaggerFragment(R.layout.profile_fragment) {
 
-    lateinit var binding: ProfileFragmentBinding
+    private lateinit var binding: ProfileFragmentBinding
 
     @Inject
     lateinit var profileViewModelFactory: ProfileViewModelFactory

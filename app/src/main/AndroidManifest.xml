@@ -13,7 +13,6 @@
         android:theme="@style/Theme.ITransitionproject">
         <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.login.LoginActivity" />
-        <activity android:name="com.example.itransition_project.ui.main.home.HomeActivity" />
         <activity
             android:name=".ui.splash.SplashScreenActivity"
             android:exported="true">

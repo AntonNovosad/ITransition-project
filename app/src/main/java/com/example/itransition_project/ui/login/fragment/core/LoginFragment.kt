@@ -19,7 +19,7 @@ class LoginFragment : DaggerFragment(R.layout.login_fragment) {
     @Inject
     lateinit var viewModelFactory: LoginViewModelFactory
 
-    lateinit var binding: LoginFragmentBinding
+    private lateinit var binding: LoginFragmentBinding
 
     private val viewModel: LoginViewModel by lazy {
         ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
