@@ -1,4 +1,4 @@
 package com.example.entity.models
 
-class HomeDataEntity(val text: String, val image: String) {
+class HomeDataEntity(var textEntity: TextEntity, var imageEntity: ImageEntity) {
 }

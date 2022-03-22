@@ -7,10 +7,7 @@ import com.example.itransition_project.logger.Logger
 import com.example.ui.home.model.HomeDataUi
 import com.example.ui.home.model.Mapper
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -29,11 +26,10 @@ class HomeViewModel(
 
     fun getListHomeData() {
         viewModelScope.launch(Dispatchers.IO) {
-            val list = useCase.getHomeDataEntity()
-            val newList = mapper.map(list)
-            homeDataMutableStateFlow.emit(newList)
+            val list = useCase.getHomeDataEntity().collect { flowList ->
+                val newList = mapper.map(flowList)
+                homeDataMutableStateFlow.emit(newList)
+            }
         }
     }
-
-
 }
