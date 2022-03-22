@@ -45,6 +45,8 @@ android {
 dependencies {
 
     implementation(project(":ui"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
 
     implementation(Dependencies.daggerAndroid)
     implementation(Dependencies.daggerAndroidSupport)
