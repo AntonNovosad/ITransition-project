@@ -33,6 +33,10 @@ android {
 
 dependencies {
 
+    implementation(project(":domain"))
+    implementation(project(":entity"))
+
+
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.material)

@@ -32,6 +32,9 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":entity"))
+
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.material)
