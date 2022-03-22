@@ -36,6 +36,8 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":entity"))
 
+    implementation(Dependencies.coroutines)
+    implementation(Dependencies.runtime)
 
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
