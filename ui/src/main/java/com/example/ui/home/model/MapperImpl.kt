@@ -6,7 +6,7 @@ class MapperImpl : Mapper {
 
     override fun map(list: List<HomeDataEntity>): List<HomeDataUi> {
         return list.map {
-            HomeDataUi(it.text, it.image)
+            HomeDataUi(it.textEntity.text, it.imageEntity.image)
         }
     }
 }
