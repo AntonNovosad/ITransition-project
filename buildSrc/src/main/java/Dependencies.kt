@@ -14,8 +14,12 @@ object Dependencies {
     val coroutines by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}" }
     val runtime by lazy { "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.runtime}" }
     val inject by lazy { "javax.inject:javax.inject:${Versions.inject}" }
-    val daggerAndroid by lazy{"com.google.dagger:dagger-android:${Versions.daggerCommon}"}
-    val daggerAndroidSupport by lazy{"com.google.dagger:dagger-android-support:${Versions.daggerCommon}"}
-    val daggerAndroidProcessor by lazy{"com.google.dagger:dagger-android-processor:${Versions.daggerCommon}"}
-    val daggerCompiler by lazy{"com.google.dagger:dagger-compiler:${Versions.daggerCommon}"}
+    val daggerAndroid by lazy { "com.google.dagger:dagger-android:${Versions.daggerCommon}" }
+    val daggerAndroidSupport by lazy { "com.google.dagger:dagger-android-support:${Versions.daggerCommon}" }
+    val daggerAndroidProcessor by lazy { "com.google.dagger:dagger-android-processor:${Versions.daggerCommon}" }
+    val daggerCompiler by lazy { "com.google.dagger:dagger-compiler:${Versions.daggerCommon}" }
+    val retrofit by lazy { "com.squareup.retrofit2:retrofit:${Versions.retrofit}" }
+    val picasso by lazy { "com.squareup.picasso:picasso:${Versions.picasso}" }
+    val converterJson by lazy { "com.squareup.retrofit2:converter-gson:${Versions.converterJson}" }
+    val interceptor by lazy { "com.squareup.okhttp3:logging-interceptor:${Versions.interceptor}" }
 }
