@@ -7,6 +7,6 @@ import retrofit2.http.GET
 
 interface ApiImageRepository {
 
-    @GET()
-    fun getUsers(): Response<List<User>>
+    @GET
+    fun getUsers(): Call<List<User>>
 }
