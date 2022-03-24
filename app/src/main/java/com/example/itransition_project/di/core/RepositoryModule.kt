@@ -1,5 +1,7 @@
 package com.example.itransition_project.di.core
 
+import com.example.data.api.repository.ApiImageRepository
+import com.example.data.api.repository.ApiTextRepository
 import com.example.data.repository.ImageRepositoryImpl
 import com.example.data.repository.TextRepositoryImpl
 import com.example.domain.repository.ImageRepository
@@ -11,12 +13,12 @@ import dagger.Provides
 class RepositoryModule {
 
     @Provides
-    fun provideImageRepository(): ImageRepository {
-        return ImageRepositoryImpl()
+    fun provideTextRepository(apiTextRepository: ApiTextRepository): TextRepository {
+        return TextRepositoryImpl(apiTextRepository)
     }
 
     @Provides
-    fun provideTextRepository(): TextRepository {
-        return TextRepositoryImpl()
+    fun provideImageRepository(apiImageRepository: ApiImageRepository): ImageRepository {
+        return ImageRepositoryImpl(apiImageRepository)
     }
 }
