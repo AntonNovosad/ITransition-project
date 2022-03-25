@@ -2,16 +2,13 @@ package com.example.itransition_project.di.core
 
 import com.example.data.api.repository.ApiImageRepository
 import com.example.data.api.repository.ApiTextRepository
-import com.squareup.picasso.BuildConfig
 import dagger.Module
 import dagger.Provides
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
-private const val BASE_IMAGE_URL = "https://https://picsum.photos/v2/list/"
+private const val BASE_IMAGE_URL = "https://picsum.photos/v2/"
 private const val BASE_TEXT_URL = "https://api.adviceslip.com/"
 
 @Module
@@ -34,16 +31,4 @@ class RetrofitModule {
             .build()
         return retrofit.create()
     }
-
-//    @Provides
-//    fun provideInterceptor(): OkHttpClient {
-//        var loggingInterceptor: HttpLoggingInterceptor
-//        if (BuildConfig.DEBUG) {
-//            loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-//        }
-//
-//        return OkHttpClient.Builder()
-//            .addInterceptor(loggingInterceptor)
-//            .build()
-//    }
 }
