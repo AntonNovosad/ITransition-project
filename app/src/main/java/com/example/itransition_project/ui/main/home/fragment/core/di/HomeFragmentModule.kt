@@ -9,6 +9,9 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class HomeFragmentModule {
     @ScopeFragment
-    @ContributesAndroidInjector(modules = [MapperModule::class, UseCaseModule::class])
+    @ContributesAndroidInjector(
+        modules = [MapperModule::class,
+            UseCaseModule::class]
+    )
     abstract fun contributeHomeFragment(): HomeFragment
 }

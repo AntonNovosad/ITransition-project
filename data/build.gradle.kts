@@ -39,6 +39,12 @@ dependencies {
     implementation(Dependencies.coroutines)
     implementation(Dependencies.runtime)
 
+    implementation(Dependencies.inject)
+
+    implementation(Dependencies.retrofit)
+    implementation(Dependencies.converterJson)
+    implementation(Dependencies.interceptor)
+
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.material)

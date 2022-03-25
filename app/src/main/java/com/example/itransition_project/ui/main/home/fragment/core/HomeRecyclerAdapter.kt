@@ -3,8 +3,10 @@ package com.example.itransition_project.ui.main.home.fragment.core
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.itransition_project.R
 import com.example.ui.home.model.HomeDataUi
 
@@ -16,7 +18,7 @@ class HomeRecyclerAdapter :
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val largeTextText: TextView = itemView.findViewById(R.id.textViewText)
-        val smallTextImage: TextView = itemView.findViewById(R.id.textViewImage)
+        val homeImageView: ImageView = itemView.findViewById(R.id.homeImageView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -29,7 +31,8 @@ class HomeRecyclerAdapter :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val home = list[position]
         holder.largeTextText.text = home.text
-        holder.smallTextImage.text = home.image
+        Glide.with(holder.itemView).load(home.image)
+            .into(holder.homeImageView)
     }
 
     override fun getItemCount(): Int {
