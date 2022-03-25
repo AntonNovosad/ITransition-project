@@ -19,7 +19,7 @@ object Dependencies {
     val daggerAndroidProcessor by lazy { "com.google.dagger:dagger-android-processor:${Versions.daggerCommon}" }
     val daggerCompiler by lazy { "com.google.dagger:dagger-compiler:${Versions.daggerCommon}" }
     val retrofit by lazy { "com.squareup.retrofit2:retrofit:${Versions.retrofit}" }
-    val picasso by lazy { "com.squareup.picasso:picasso:${Versions.picasso}" }
+    val glide by lazy { "com.github.bumptech.glide:glide:${Versions.glide}" }
     val converterJson by lazy { "com.squareup.retrofit2:converter-gson:${Versions.converterJson}" }
     val interceptor by lazy { "com.squareup.okhttp3:logging-interceptor:${Versions.interceptor}" }
 }

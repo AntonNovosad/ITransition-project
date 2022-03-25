@@ -53,11 +53,10 @@ dependencies {
     kapt(Dependencies.daggerAndroidProcessor)
     kapt(Dependencies.daggerCompiler)
 
-
     implementation(Dependencies.retrofit)
     implementation(Dependencies.converterJson)
-    implementation(Dependencies.picasso)
     implementation(Dependencies.interceptor)
+    implementation(Dependencies.glide)
 
     implementation(Dependencies.fragment)
     implementation(Dependencies.ui)

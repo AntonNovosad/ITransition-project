@@ -15,7 +15,7 @@ object Versions {
     const val inject = "1"
     const val daggerCommon = "2.40.1"
     const val retrofit = "2.9.0"
-    const val picasso = "2.71828"
+    const val glide = "4.12.0"
     const val converterJson = "2.9.0"
     const val interceptor = "3.9.0"
 }

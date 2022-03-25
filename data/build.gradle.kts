@@ -43,7 +43,6 @@ dependencies {
 
     implementation(Dependencies.retrofit)
     implementation(Dependencies.converterJson)
-    implementation(Dependencies.picasso)
     implementation(Dependencies.interceptor)
 
     implementation(Dependencies.core)

@@ -40,7 +40,6 @@ dependencies {
 
     implementation(Dependencies.retrofit)
     implementation(Dependencies.converterJson)
-    implementation(Dependencies.picasso)
 
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
