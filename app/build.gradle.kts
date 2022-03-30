@@ -48,6 +48,9 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
 
+    implementation(Dependencies.roomRuntime)
+    annotationProcessor(Dependencies.roomCompiler)
+
     implementation(Dependencies.daggerAndroid)
     implementation(Dependencies.daggerAndroidSupport)
     kapt(Dependencies.daggerAndroidProcessor)

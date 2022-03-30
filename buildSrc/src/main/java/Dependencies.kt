@@ -22,4 +22,6 @@ object Dependencies {
     val glide by lazy { "com.github.bumptech.glide:glide:${Versions.glide}" }
     val converterJson by lazy { "com.squareup.retrofit2:converter-gson:${Versions.converterJson}" }
     val interceptor by lazy { "com.squareup.okhttp3:logging-interceptor:${Versions.interceptor}" }
+    val roomRuntime by lazy { "android.arch.persistence.room:runtime:${Versions.roomRuntime}" }
+    val roomCompiler by lazy { "android.arch.persistence.room:compiler:${Versions.roomCompiler}" }
 }

@@ -2,12 +2,15 @@ package com.example.itransition_project.di.core
 
 import com.example.data.api.repository.ApiImageRepository
 import com.example.data.api.repository.ApiTextRepository
+import com.example.data.database.UserDatabase
 import com.example.data.repository.ImageRepositoryImpl
 import com.example.data.repository.TextRepositoryImpl
+import com.example.data.repository.UserRepository
 import com.example.domain.repository.ImageRepository
 import com.example.domain.repository.TextRepository
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class RepositoryModule {

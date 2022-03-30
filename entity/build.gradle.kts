@@ -33,6 +33,9 @@ android {
 
 dependencies {
 
+    implementation(Dependencies.roomRuntime)
+    annotationProcessor(Dependencies.roomCompiler)
+
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.material)

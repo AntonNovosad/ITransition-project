@@ -39,6 +39,9 @@ dependencies {
     implementation(Dependencies.coroutines)
     implementation(Dependencies.runtime)
 
+    implementation(Dependencies.roomRuntime)
+    annotationProcessor(Dependencies.roomCompiler)
+
     implementation(Dependencies.inject)
 
     implementation(Dependencies.retrofit)

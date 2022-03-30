@@ -18,4 +18,6 @@ object Versions {
     const val glide = "4.12.0"
     const val converterJson = "2.9.0"
     const val interceptor = "3.9.0"
+    const val roomRuntime = "1.1.1"
+    const val roomCompiler = "1.1.1"
 }
